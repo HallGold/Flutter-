@@ -1,0 +1,162 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Flutter 环境配置</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="flutter-">Flutter 环境配置</h1>
+<blockquote>
+<p>Windows 和 Linux 操作系统，只能搭建 Android 开发环境；</p>
+</blockquote>
+<blockquote>
+<p>如果需要同时搭建 Android 和 IOS 开发环境，请选择 <strong>MacOS</strong>。</p>
+</blockquote>
+<h2 id="windows-flutter-">Windows 下的 Flutter 环境配置</h2>
+<h3 id="-git-">安装 Git 环境</h3>
+<p>联网下载最新的 Git 安装包，直接安装到计算机中即可。</p>
+<h3 id="-flutter">安装 Flutter</h3>
+<ol>
+<li><p>通过以下命令，clone 最新的 Flutter 仓储到本地：</p>
+<pre><code> git clone https://github.com/flutter/flutter.git
+</code></pre></li>
+<li><p>将 clone 的 Flutter 仓储中 <code>bin</code> 目录的完整路径，添加到系统环境变量 <code>path</code> 中。</p>
+</li>
+</ol>
+<h3 id="-jdk">安装 JDK</h3>
+<p>安装 JDK 成功后，按照如下步骤配置系统环境变量：</p>
+<ol>
+<li><p>新建<strong>系统环境变量</strong> <code>JAVA_HOME</code> ，值为 jdk 的安装目录</p>
+</li>
+<li><p>修改<strong>系统环境变量 path</strong> ，新增如下两个变量：</p>
+<ul>
+<li><p><code>%JAVA_HOME%\bin</code></p>
+</li>
+<li><p><code>%JAVA_HOME%\jre\bin</code></p>
+</li>
+</ul>
+</li>
+<li><p>新建系统环境变量 <code>CLASSPATH</code> ，值为：</p>
+<ul>
+<li><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
+</ul>
+</li>
+<li><p>保存上述所有的操作，同时退出系统环境变量配置窗口，打开任意终端并输入 <code>javac</code>，如果能出现 <code>javac</code> 的命令选项，就表示配置成功！</p>
+</li>
+</ol>
+<h3 id="-android-sdk">安装 Android SDK</h3>
+<p>安装 Android SDK 成功后，按照如下步骤配置系统环境变量：</p>
+<ol>
+<li><p>新建<strong>系统环境变量</strong> <code>ANDROID_HOME</code> ，值为 <code>android SDK Manager</code> 的安装路径</p>
+</li>
+<li><p>修改<strong>系统环境变量 path</strong> ，新增如下两个变量：</p>
+<ul>
+<li><p><code>%ANDROID_HOME%\tools</code></p>
+</li>
+<li><p><code>%ANDROID_HOME%\platform-tools</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="-">安装夜神模拟器</h3>
+<ol>
+<li><p>直接安装最新版的夜神模拟器；</p>
+</li>
+<li><p>将安卓 SDK 安装目录中，<code>platform-tools</code> 目录下的 <code>adb.exe</code> 拷贝一份，替换掉 <code>Nox\bin</code> 目录下夜神模拟器自带的 <code>adb.exe</code>；</p>
+</li>
+<li><p>将安卓 SDK 安装目录中，<code>platform-tools</code> 目录下的 <code>adb.exe</code> 拷贝一份，重命名为 <code>nox_adb.exe</code> 后，替换掉 <code>Nox\bin</code> 目录下夜神模拟器自带的 <code>nox_adb.exe</code>；</p>
+</li>
+<li><p>打开<strong>夜神多开器</strong>，新建 <code>安卓5.1.1</code> 模拟器；</p>
+</li>
+</ol>
+<h3 id="-vs-code">安装 VS Code</h3>
+<ol>
+<li><p>直接安装最新版本的 VS Code；</p>
+</li>
+<li><p>在扩展中，搜索 <code>flutter</code> 和 <code>dart</code> 插件并安装；</p>
+</li>
+<li><p>创建项目并运行到夜神模拟器中查看效果。</p>
+</li>
+</ol>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
